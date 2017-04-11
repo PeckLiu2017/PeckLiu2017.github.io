@@ -137,6 +137,214 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-4-11-ORID" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/12/2017-4-11-ORID/">2017.4.11 ORID</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/12/2017-4-11-ORID/" class="archive-article-date">
+  	<time datetime="2017-04-11T17:10:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Objective"><a href="#Objective" class="headerlink" title="Objective"></a>Objective</h2><h2 id="关于今天的课程-你记得什么"><a href="#关于今天的课程-你记得什么" class="headerlink" title="关于今天的课程, 你记得什么?"></a>关于今天的课程, 你记得什么?</h2><p>   关于什么是学到东西的进一步认识</p>
+<h2 id="完成了什么"><a href="#完成了什么" class="headerlink" title="完成了什么?"></a>完成了什么?</h2><p>   CSS有position和overflow属性。关于footer的布局</p>
+<p>##知识点一：将footer固定在浏览器页面的最底部。<br>   页面的布局是这样的：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">          &lt;div class=&quot;container-fluid&quot;&gt;</div><div class="line">              &lt;%=  render &quot;common/navbar&quot; %&gt;</div><div class="line">              &lt;%=  render &quot;common/flashes&quot; %&gt;</div><div class="line">              &lt;%= yield %&gt;</div><div class="line">          &lt;/div&gt;</div><div class="line">          &lt;div class=&quot;main&quot;&gt;&lt;/div&gt;</div><div class="line">      &lt;%=  render &apos;common/footer&apos; %&gt;</div><div class="line">  &lt;/body&gt;</div></pre></td></tr></table></figure></p>
+<p>   如果footer上面内容不够一页，footer就直接显示在浏览器底部。不是像这样：<br><img src="https://ww3.sinaimg.cn/large/006tNbRwgy1fej8zzaorjj317e12gdkp.jpg" alt=""><br>  而是像这样：<br><img src="https://ww3.sinaimg.cn/large/006tNbRwgy1fej8zz5unjj31je11ktdw.jpg" alt=""><br>解决思路是把body设为高度100%，然后把footer固定在它底部就可以了。<br>body {<br>    height: 100%;<br>    margin: 0;<br>    padding: 0;<br>}<br>同时，<br>.main {<br>    padding-bottom: 100px;<br>    margin-bottom: 10%;<br>}<br>footer {<br>    height: 10%;<br>    margin-top: -100px;<br>}<br><strong>（最好用百分比高度，因为浏览器窗口大小问题可能是CSS样式效果发生改变。）</strong><br>为什么要有这一步呢，因为：<br> CSS盒子中margin的属性，<br><img src="https://ww3.sinaimg.cn/large/006tNbRwgy1fej90nr5d9j31kw0sr4da.jpg" alt=""><br>main元素是空的，但它的margin部分却把footer的内容包含了。若main里面有内容，则会紧挨着footer的内容，想要留白将footer置于底部，要设置padding，这里的情况使用padding-bottom把内容分开，padding——bottom=footer的height。</p>
+<p>##知识点二：撑大父元素。<br>HTML布局如上，但发现问题，body并没有100%的高度，子元素footer跑到父元素body外面去了：<br><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fej90kz3qfj31kw0trtix.jpg" alt=""><br>原因是body中的子元素没有把body父元素“自动撑大”。解决方法是在body父元素中增加overflow属性，overflow规定溢出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">    height: 100%;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">    overflow: scroll;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后父元素body被撑大到包含footer了。</p>
+<p>##知识点三：position属性。<br>如果数据较多，显示内容超过一页，又将footer的position设为absolute，到了一页的末尾，有可能发生footer盖住上面内容的情况：<br><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1fej90j3e0lj317i144wnh.jpg" alt=""></p>
+<h2 id="Reflective"><a href="#Reflective" class="headerlink" title="Reflective"></a>Reflective</h2><p>   暂无。</p>
+<h2 id="Interpretive"><a href="#Interpretive" class="headerlink" title="Interpretive"></a>Interpretive</h2><h2 id="我们今天学到了什么"><a href="#我们今天学到了什么" class="headerlink" title="我们今天学到了什么?"></a>我们今天学到了什么?</h2><h2 id="今天一个重要的领悟是什么"><a href="#今天一个重要的领悟是什么" class="headerlink" title="今天一个重要的领悟是什么?"></a>今天一个重要的领悟是什么?</h2><blockquote>
+<p>实践是最好的学习，至于自己实际做出来，才知道会遇到哪些坑，以后决不能有一点侥幸心理，遇到代码，全部必须自己敲出来。</p>
+</blockquote>
+<h2 id="Decisional"><a href="#Decisional" class="headerlink" title="Decisional"></a>Decisional</h2><h2 id="我们会如何用一句话形容今天的工作"><a href="#我们会如何用一句话形容今天的工作" class="headerlink" title="我们会如何用一句话形容今天的工作"></a>我们会如何用一句话形容今天的工作</h2><p>   时间投入不够</p>
+<h2 id="有哪些工作需要明天继续努力"><a href="#有哪些工作需要明天继续努力" class="headerlink" title="有哪些工作需要明天继续努力?"></a>有哪些工作需要明天继续努力?</h2><p>   早起，上下午至少各3小时用于学代码。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/12/2017-4-11-ORID/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017-4-8-ORID" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/2017-4-8-ORID/">2017.4.8 ORID——Job-Listing小型工作招聘网站的思路总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/08/2017-4-8-ORID/" class="archive-article-date">
+  	<time datetime="2017-04-07T17:15:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Objective：一个问题引发的思考——要拥有思考的能力："><a href="#Objective：一个问题引发的思考——要拥有思考的能力：" class="headerlink" title="Objective：一个问题引发的思考——要拥有思考的能力："></a>Objective：一个问题引发的思考——要拥有思考的能力：</h2><p>自己做job-listing的功能开发时感到苦难重重，但看到job-listing的答案代码时，感到”原来这么简单！我怎么没想到呢？对啊，为什么很简单功能变化一下，搭配一下我却想不到呢“？看起来很简单，做起来却这么难，这其中的差别在于什么呢？差别应该在于教材上所说的”迁移能力“，或者说笑来老师所说的”把问题分解再组合起来的能力——归纳分析总结能力了”。<br>不运用归纳分析能力的思考过程是这样的：</p>
+<blockquote>
+<p>目标=&gt;&gt;对问题理解一知半解,没搞明白就做=&gt;&gt;想到了一点头绪，做了一部分工作=&gt;&gt;想做这个又想要那个或者想不下去了==&gt;工作量太大超出能力范围and接下来有点难了==&gt;只能或者只会做这么多了（其实是只能想这么多了）=&gt;&gt;任务失败</p>
+</blockquote>
+<p>运用归纳分析能力的思考过程则是这样的：</p>
+<blockquote>
+<p>目标=&gt;&gt;清晰地描述问题，把问题归纳成类=&gt;&gt;根据类别将大问题拆解成可以实作的小问题=&gt;&gt;做出最小规模的解决问题的方案（遇到的一般是时间精力等工作量的问题而不是不知道该怎么做的问题）=&gt;&gt;更新迭代进步=&gt;&gt;逐渐完成一开始被拆解的任务=&gt;&gt;任务成功</p>
+</blockquote>
+<h2 id="两个概念："><a href="#两个概念：" class="headerlink" title="两个概念："></a>两个概念：</h2><p>1.正确的开发步骤：</p>
+<blockquote>
+<p>开发的步骤：<br>目标——做job-listing的网站=&gt;&gt;”用户故事“理清需求（描述和拆解问题）=&gt;&gt;做出最小可行产品,这里是crud操作=&gt;&gt;产品不断更新迭代（加上管理员与一般使用者的身份判断和前台后台的不同界面）=&gt;&gt;fontawesome美化界面，为调整工作的隐藏和公开状态而增加一个按钮以优化用户体验等=&gt;&gt;完成目标</p>
+</blockquote>
+<ul>
+<li><p>为什么用”用户故事的方法？“</p>
+<ul>
+<li>把做产品<strong>归纳</strong>为服务不同的人。用”身为「某角色」，会做「某事」，以完成「某商业价值」“的标准衡量功能的价值，瞬间就会变得非常聚焦，所有功能都是「各角色所需要的关键功能」，把人的需求满足，我们的任务就完成了。在这里就是我要服务的就是管理员和使用者。</li>
+<li><p>通过“Must have、should have、could have、nice to have”<strong>归纳出问题的重要性</strong>。做出基本的”CRUD“进行的功能，这非常重要，在这个基础上能<strong>教我如何开始，帮我抑制完美主义的狂想</strong>，实现从0到1的开端，然后在此基础上实现从1到N的发展。</p>
+</li>
+<li><p>怎样用？</p>
+<ol>
+<li>把想到的需求写下来<br><img src="https://ww2.sinaimg.cn/large/006tNc79gy1fef9rruq4jj31kw23vqv6.jpg" alt=""></li>
+<li>整理精简需求,归纳出角色,用V1级别的绿色圈圈圈起来。根据角色开始开发功能,这里先开发管理员功能<br><img src="https://ww2.sinaimg.cn/large/006tNc79gy1fef9qzhkg3j31kw23v1kz.jpg" alt=""></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>2.一个通用的顺利完成开发的方法(两个顺序——MVC和CRUD,CRUD之前先加路由route)：</p>
+<ul>
+<li><strong>做事不重不漏</strong>,产品可以随时迭代，代码可扩展，后续想增加什么东西不会跟前面有大的冲突。<br>写代码的顺按照MVC的顺序，先设计Model，然后增加Controller,和view。<ul>
+<li>Model<strong>是一个承载CRUD操作和逻辑判断的载体</strong>。先增加两个字段title，description用来CRUD操作，涉及到选择的，”是还是不是“——可以用boolean值来实现。比如是否是管理员，工作是否隐藏用boolean值实现逻辑判断。</li>
+<li>Controller的生成要放在V前面，因为有时在terminal中无法先生成view页面。</li>
+<li>View安装bootstrap的gem，然后再文件中配置一下，一般去app/assets/stylesheets/application.scss和app/assets/javascripts/application.js这两个文件中配置。</li>
+</ul>
+</li>
+<li>按照CRUD的顺序，依次写各种功能的MVC代码。</li>
+<li>迭代一次——分出前台后台，增加管理员面板以及判断,<code>rails g controller admin::jobs</code>。</li>
+<li><p>迭代两次——往model中加入薪资上下线字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">validates :wage_upper_bound, presence: true</div><div class="line">validates :wage_lower_bound, presence: true</div><div class="line">validates :wage_lower_bound, numericality: &#123; greater_than: 0&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>迭代三次——增加隐藏/公开工作功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> class AddIsHiddenToJob &lt; ActiveRecord::Migration[5.0]</div><div class="line">  def change</div><div class="line">    add_column :jobs, :is_hidden, :boolean, default: true</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+</li>
+<li><p>迭代四次——增加fontawesome,sidebar,增加隐藏/公开工作功能按钮进行页面美化和功能的增加优化。</p>
+<ul>
+<li><p>fontawesome</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">def render_job_status(job)</div><div class="line">   if job.is_hidden</div><div class="line">     content_tag(:span, &quot;&quot;, :class =&gt; &quot;fa fa-lock&quot;)</div><div class="line">   else</div><div class="line">     content_tag(:span, &quot;&quot;, :class =&gt; &quot;fa fa-globe&quot;)</div><div class="line">   end</div><div class="line"> end</div></pre></td></tr></table></figure>
+</li>
+<li><p>sidebar</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;ul class=&quot;nav nav-pills nav-stacked&quot; style=&quot;max-width: 300px; padding-top:20px;&quot;&gt;</div><div class="line">     &lt;li class=&quot;active&quot;&gt;&lt;%= link_to(&quot;Jobs&quot;, admin_jobs_path ) %&gt; &lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>增加隐藏/公开工作功能</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">def publish</div><div class="line">   @job = Job.find(params[:id])</div><div class="line">   @job.is_hidden = false</div><div class="line">   @job.save</div><div class="line">   redirect_to :back</div><div class="line"> end</div><div class="line">def hide</div><div class="line">   @job = Job.find(params[:id])</div><div class="line">   @job.is_hidden = true</div><div class="line">   @job.save</div><div class="line">   redirect_to :back</div><div class="line"> end</div></pre></td></tr></table></figure>
+<p>然后任务完成。</p>
+</li>
+</ul>
+<h2 id="Reflective"><a href="#Reflective" class="headerlink" title="Reflective"></a>Reflective</h2><p>   今天的情绪平稳</p>
+<h2 id="Interpretive"><a href="#Interpretive" class="headerlink" title="Interpretive"></a>Interpretive</h2><h2 id="我们今天学到了什么"><a href="#我们今天学到了什么" class="headerlink" title="我们今天学到了什么?"></a>我们今天学到了什么?</h2><p>   上文所述两个概念。</p>
+<h2 id="今天一个重要的领悟是什么"><a href="#今天一个重要的领悟是什么" class="headerlink" title="今天一个重要的领悟是什么?"></a>今天一个重要的领悟是什么?</h2><p>   格式化写作可以大大增加写作效率，减少写作的时间。这篇文章从早上10点到现在16：13，修修改改花了太多时间了。虽然整理自己思绪是很重要的一件事，但这样耗不起。</p>
+<h2 id="Decisional"><a href="#Decisional" class="headerlink" title="Decisional"></a>Decisional</h2><p>   今天的工作合格，计划没有全部完成，这是因为计划订的不够实际还是自己做事拖拉？这需要调整。不吃饭工作又困又饿实在不好受。<br>   今后要积累更多的写作模板以高效写作。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">方法总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ORID/" class="article-tag-list-link color5">ORID</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/08/2017-4-8-ORID/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-2017-4-7-ORID" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -174,6 +382,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ORID</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -425,7 +644,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ORID</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">方法总结</a>
               </li>
             
             <div class="clearfix"></div>
