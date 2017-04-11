@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="https://peckliu2017.github.io">
   <title>2017.4.11 ORID | Just Writing and thinking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Objective   今天要记录什么?   CSS有position和overflow属性。关于footer的布局 ##知识点一：将footer固定在浏览器页面的最底部。   页面的布局是这样的：   123456789&amp;lt;body&amp;gt;          &amp;lt;div class=&amp;quot;container-fluid&amp;quot;&amp;gt;              &amp;lt;%=">
+  <meta name="description" content="Objective   今天要记录什么?   CSS有position和overflow属性。关于footer的布局 知识点一：将footer固定在浏览器页面的最底部。   页面的布局是这样的：   123456789&amp;lt;body&amp;gt;          &amp;lt;div class=&amp;quot;container-fluid&amp;quot;&amp;gt;              &amp;lt;%=  re">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2017.4.11 ORID">
 <meta property="og:url" content="https://peckliu2017.github.io/2017/04/12/2017-4-11-ORID/index.html">
 <meta property="og:site_name" content="Just Writing and thinking">
-<meta property="og:description" content="Objective   今天要记录什么?   CSS有position和overflow属性。关于footer的布局 ##知识点一：将footer固定在浏览器页面的最底部。   页面的布局是这样的：   123456789&amp;lt;body&amp;gt;          &amp;lt;div class=&amp;quot;container-fluid&amp;quot;&amp;gt;              &amp;lt;%=">
+<meta property="og:description" content="Objective   今天要记录什么?   CSS有position和overflow属性。关于footer的布局 知识点一：将footer固定在浏览器页面的最底部。   页面的布局是这样的：   123456789&amp;lt;body&amp;gt;          &amp;lt;div class=&amp;quot;container-fluid&amp;quot;&amp;gt;              &amp;lt;%=  re">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fej8zzaorjj317e12gdkp.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fej8zz5unjj31je11ktdw.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fej90nr5d9j31kw0sr4da.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwgy1fej90kz3qfj31kw0trtix.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fej90j3e0lj317i144wnh.jpg">
-<meta property="og:updated_time" content="2017-04-11T17:32:13.000Z">
+<meta property="og:updated_time" content="2017-04-11T17:37:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017.4.11 ORID">
-<meta name="twitter:description" content="Objective   今天要记录什么?   CSS有position和overflow属性。关于footer的布局 ##知识点一：将footer固定在浏览器页面的最底部。   页面的布局是这样的：   123456789&amp;lt;body&amp;gt;          &amp;lt;div class=&amp;quot;container-fluid&amp;quot;&amp;gt;              &amp;lt;%=">
+<meta name="twitter:description" content="Objective   今天要记录什么?   CSS有position和overflow属性。关于footer的布局 知识点一：将footer固定在浏览器页面的最底部。   页面的布局是这样的：   123456789&amp;lt;body&amp;gt;          &amp;lt;div class=&amp;quot;container-fluid&amp;quot;&amp;gt;              &amp;lt;%=  re">
 <meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fej8zzaorjj317e12gdkp.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Just Writing and thinking" type="application/atom+xml">
@@ -166,19 +166,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Objective"><a href="#Objective" class="headerlink" title="Objective"></a>Objective</h2><p>   今天要记录什么?<br>   CSS有position和overflow属性。关于footer的布局</p>
-<p>##知识点一：将footer固定在浏览器页面的最底部。<br>   页面的布局是这样的：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">          &lt;div class=&quot;container-fluid&quot;&gt;</div><div class="line">              &lt;%=  render &quot;common/navbar&quot; %&gt;</div><div class="line">              &lt;%=  render &quot;common/flashes&quot; %&gt;</div><div class="line">              &lt;%= yield %&gt;</div><div class="line">          &lt;/div&gt;</div><div class="line">          &lt;div class=&quot;main&quot;&gt;&lt;/div&gt;</div><div class="line">      &lt;%=  render &apos;common/footer&apos; %&gt;</div><div class="line">  &lt;/body&gt;</div></pre></td></tr></table></figure></p>
+        <h1 id="Objective"><a href="#Objective" class="headerlink" title="Objective"></a>Objective</h1><p>   今天要记录什么?<br>   CSS有position和overflow属性。关于footer的布局</p>
+<h2 id="知识点一：将footer固定在浏览器页面的最底部。"><a href="#知识点一：将footer固定在浏览器页面的最底部。" class="headerlink" title="知识点一：将footer固定在浏览器页面的最底部。"></a>知识点一：将footer固定在浏览器页面的最底部。</h2><p>   页面的布局是这样的：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">          &lt;div class=&quot;container-fluid&quot;&gt;</div><div class="line">              &lt;%=  render &quot;common/navbar&quot; %&gt;</div><div class="line">              &lt;%=  render &quot;common/flashes&quot; %&gt;</div><div class="line">              &lt;%= yield %&gt;</div><div class="line">          &lt;/div&gt;</div><div class="line">          &lt;div class=&quot;main&quot;&gt;&lt;/div&gt;</div><div class="line">      &lt;%=  render &apos;common/footer&apos; %&gt;</div><div class="line">  &lt;/body&gt;</div></pre></td></tr></table></figure></p>
 <p>   如果footer上面内容不够一页，footer就直接显示在浏览器底部。不是像这样：<br><img src="https://ww3.sinaimg.cn/large/006tNbRwgy1fej8zzaorjj317e12gdkp.jpg" alt=""><br>  而是像这样：<br><img src="https://ww3.sinaimg.cn/large/006tNbRwgy1fej8zz5unjj31je11ktdw.jpg" alt=""><br>解决思路是把body设为高度100%，然后把footer固定在它底部就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">    height: 100%;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">&#125;</div><div class="line">同时，</div><div class="line">.main &#123;</div><div class="line">    padding-bottom: 100px;</div><div class="line">    margin-bottom: 10%;</div><div class="line">&#125;</div><div class="line">footer &#123;</div><div class="line">    height: 10%;</div><div class="line">    margin-top: -100px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>（最好用百分比高度，因为浏览器窗口大小问题可能是CSS样式效果发生改变。）</strong><br>为什么要有这一步呢，因为：<br> CSS盒子中margin的属性，<br><img src="https://ww3.sinaimg.cn/large/006tNbRwgy1fej90nr5d9j31kw0sr4da.jpg" alt=""><br>main元素是空的，但它的margin部分却把footer的内容包含了。若main里面有内容，则会紧挨着footer的内容，想要留白将footer置于底部，要设置padding，这里的情况使用padding-bottom把内容分开，padding——bottom=footer的height。</p>
-<p>##知识点二：撑大父元素。<br>HTML布局如上，但发现问题，body并没有100%的高度，子元素footer跑到父元素body外面去了：<br><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fej90kz3qfj31kw0trtix.jpg" alt=""><br>原因是body中的子元素没有把body父元素“自动撑大”。解决方法是在body父元素中增加overflow属性，overflow规定溢出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">    height: 100%;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">    overflow: scroll;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>（最好用百分比高度，因为浏览器窗口大小问题可能导致CSS样式效果发生改变。）</strong><br>为什么要有这一步呢，因为：<br> CSS盒子中margin的属性，<br><img src="https://ww3.sinaimg.cn/large/006tNbRwgy1fej90nr5d9j31kw0sr4da.jpg" alt=""><br>main元素是空的，但它的margin部分可以把footer的内容包含。想要留白将footer置于底部，这里的情况是使用padding-bottom把footer同上面的文字内容分开，padding-bottom=footer的height。</p>
+<h2 id="知识点二：撑大父元素。"><a href="#知识点二：撑大父元素。" class="headerlink" title="知识点二：撑大父元素。"></a>知识点二：撑大父元素。</h2><p>HTML布局如上，但发现问题，body并没有100%的高度，子元素footer跑到父元素body外面去了：<br><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fej90kz3qfj31kw0trtix.jpg" alt=""><br>原因是body中的子元素没有把body父元素“自动撑大”。解决方法是在body父元素中增加overflow属性，overflow规定溢出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">    height: 100%;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">    overflow: scroll;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>然后父元素body被撑大到包含footer了。</p>
-<p>##知识点三：position属性。<br>如果数据较多，显示内容超过一页，又将footer的position设为absolute，到了一页的末尾，有可能发生footer盖住上面内容的情况：<br><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1fej90j3e0lj317i144wnh.jpg" alt=""></p>
-<h2 id="Reflective"><a href="#Reflective" class="headerlink" title="Reflective"></a>Reflective</h2><p>   暂无。</p>
-<h2 id="Interpretive"><a href="#Interpretive" class="headerlink" title="Interpretive"></a>Interpretive</h2><h2 id="我们今天学到了什么"><a href="#我们今天学到了什么" class="headerlink" title="我们今天学到了什么?"></a>我们今天学到了什么?</h2><h2 id="今天一个重要的领悟是什么"><a href="#今天一个重要的领悟是什么" class="headerlink" title="今天一个重要的领悟是什么?"></a>今天一个重要的领悟是什么?</h2><blockquote>
+<h2 id="知识点三：position属性。"><a href="#知识点三：position属性。" class="headerlink" title="知识点三：position属性。"></a>知识点三：position属性。</h2><p>如果数据较多，显示内容超过一页，又将footer的position设为absolute，到了一页的末尾，有可能发生footer盖住上面内容的情况：<br><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1fej90j3e0lj317i144wnh.jpg" alt=""></p>
+<h1 id="Reflective"><a href="#Reflective" class="headerlink" title="Reflective"></a>Reflective</h1><p>   暂无。</p>
+<h1 id="Interpretive"><a href="#Interpretive" class="headerlink" title="Interpretive"></a>Interpretive</h1><p> 今天一个重要的领悟是什么?</p>
+<blockquote>
 <p>实践是最好的学习，至于自己实际做出来，才知道会遇到哪些坑，以后决不能有一点侥幸心理，遇到代码，全部必须自己敲出来。</p>
 </blockquote>
-<h2 id="Decisional"><a href="#Decisional" class="headerlink" title="Decisional"></a>Decisional</h2><h2 id="我们会如何用一句话形容今天的工作"><a href="#我们会如何用一句话形容今天的工作" class="headerlink" title="我们会如何用一句话形容今天的工作"></a>我们会如何用一句话形容今天的工作</h2><p>   时间投入不够</p>
-<h2 id="有哪些工作需要明天继续努力"><a href="#有哪些工作需要明天继续努力" class="headerlink" title="有哪些工作需要明天继续努力?"></a>有哪些工作需要明天继续努力?</h2><p>   早起，上下午至少各3小时用于学代码。</p>
+<h1 id="Decisional"><a href="#Decisional" class="headerlink" title="Decisional"></a>Decisional</h1><ul>
+<li>我们会如何用一句话形容今天的工作<br>时间投入不够</li>
+<li>有哪些工作需要明天继续努力?<br>早起，上下午至少各3小时用于学代码。</li>
+</ul>
 
       
 
