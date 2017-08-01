@@ -9,13 +9,13 @@
   <title>2017.4.13 ORID | Just Writing and thinking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Objective知识点1：   js能干什么？  改变HTML内容,eg: 1&amp;lt;button type=&amp;quot;button&amp;quot; onclick=&amp;apos;document.getElementById(&amp;quot;demo&amp;quot;).innerHTML = &amp;quot;Hello JavaScript!&amp;quot;&amp;apos;&amp;gt;Click Me!&amp;lt;/butt">
-<meta name="keywords" content="ORID">
+<meta name="keywords" content="JS学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2017.4.13 ORID">
 <meta property="og:url" content="https://peckliu2017.github.io/2017/04/13/2017-4-13-ORID/index.html">
 <meta property="og:site_name" content="Just Writing and thinking">
 <meta property="og:description" content="Objective知识点1：   js能干什么？  改变HTML内容,eg: 1&amp;lt;button type=&amp;quot;button&amp;quot; onclick=&amp;apos;document.getElementById(&amp;quot;demo&amp;quot;).innerHTML = &amp;quot;Hello JavaScript!&amp;quot;&amp;apos;&amp;gt;Click Me!&amp;lt;/butt">
-<meta property="og:updated_time" content="2017-04-14T02:22:47.000Z">
+<meta property="og:updated_time" content="2017-04-14T03:49:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017.4.13 ORID">
 <meta name="twitter:description" content="Objective知识点1：   js能干什么？  改变HTML内容,eg: 1&amp;lt;button type=&amp;quot;button&amp;quot; onclick=&amp;apos;document.getElementById(&amp;quot;demo&amp;quot;).innerHTML = &amp;quot;Hello JavaScript!&amp;quot;&amp;apos;&amp;gt;Click Me!&amp;lt;/butt">
@@ -194,7 +194,7 @@
 <blockquote>
 <p>知乎上浪子的回答是这样的：<br>假如你要做两件事，烧水、刷牙<br>同步：你烧水，等水烧开了你再去刷牙<br>异步：你烧水，不等水烧开就去刷牙了，水烧开了会发出声音告诉你（callback），然后你再处理水烧开之后的事情。只要你是个正常人，都会选择第二种<br>董飞的回答是这样的：<br>阻塞/同步：打一个电话一直到有人接为止<br>非阻塞：打一个电话没人接，每隔10分钟再打一次，知道有人接为止</p>
 </blockquote>
-<p>当然也有其他很多的回答，但一个具体的回答无论回答地多么生动形象，都无法使我在我需要时自动就想到用去用这个知识点。<br>所以我对于这四个概念的理解是，当我为了提高效率去完成代码，就会自动从同步到异步，从阻塞到非阻塞了。所以，只要在平时注重效率提升，多了解运行原理就行了。这个概念以后还会不断更新，姑且先写到这里。<br><strong>但他们的回答实在精彩，所以贴在上面。</strong></p>
+<p>当然也有其他很多的回答，但一个具体的回答即使生动形象，也无法使我在我需要时自动就想到去用这个知识点。<br>所以我对于这四个概念的理解是，当我为了提高效率去完成代码，就会自动从同步到异步，从阻塞到非阻塞了。所以，要在平时注重效率提升，多了解运行原理。这个概念以后还会不断更新，姑且先写到这里。<br><strong>他们的回答实在精彩，所以贴在上面。</strong></p>
 <h2 id="知识点6"><a href="#知识点6" class="headerlink" title="知识点6"></a>知识点6</h2><p>javascript的输出：</p>
 <ul>
 <li>Writing into an window alert box   #alert(…)；</li>
@@ -203,7 +203,7 @@
 <li>Writing into the browser console   #console.log(5 + 6);</li>
 </ul>
 <h2 id="知识点7"><a href="#知识点7" class="headerlink" title="知识点7"></a>知识点7</h2><p>下面这段代码中，”person.firstName”的”firstName”不能是数字。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;script&gt;</div><div class="line">var person = &#123;</div><div class="line">    firstName : &quot;John&quot;,</div><div class="line">    lastName  : &quot;Doe&quot;,</div><div class="line">    age       : 50,</div><div class="line">    eyeColor  : &quot;blue&quot;</div><div class="line">&#125;;</div><div class="line">document.getElementById(&quot;demo&quot;).innerHTML =</div><div class="line">person.firstName + &quot; is &quot; + person.age + &quot; years old.&quot;;</div><div class="line">#或者document.getElementById(&quot;demo&quot;).innerHTML = person[&quot;firstName&quot;] + person[&quot;lastName&quot;];</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="知识点8"><a href="#知识点8" class="headerlink" title="知识点8"></a>知识点8</h2><p>记一段函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;p id=&quot;demo1&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;p id=&quot;demo2&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;p id=&quot;demo3&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;p id=&quot;demo4&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;p id=&quot;demo5&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;script&gt;</div><div class="line">var y = 5;   # y = 5</div><div class="line">var x = ++y;   #y =</div><div class="line">var y = y;  # y = 6</div><div class="line">var z = y++;  # y = 7</div><div class="line">var y = y; # y = 7</div><div class="line">document.getElementById(&quot;demo1&quot;).innerHTML = &quot;y=&quot;+y; #所以这里输出y=7</div><div class="line">document.getElementById(&quot;demo2&quot;).innerHTML = &quot;x=&quot;+x;</div><div class="line">document.getElementById(&quot;demo3&quot;).innerHTML = &quot;y=&quot;+y;</div><div class="line">document.getElementById(&quot;demo4&quot;).innerHTML = &quot;z=&quot;+z;</div><div class="line">document.getElementById(&quot;demo5&quot;).innerHTML = &quot;y=&quot;+y;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="知识点8"><a href="#知识点8" class="headerlink" title="知识点8"></a>知识点8</h2><p>记一段函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;p id=&quot;demo1&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;p id=&quot;demo2&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;p id=&quot;demo3&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;p id=&quot;demo4&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;p id=&quot;demo5&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;script&gt;</div><div class="line">var y = 5;   # y = 5</div><div class="line">var x = ++y;   # y = 6</div><div class="line">var y = y;  # y = 6</div><div class="line">var z = y++;  # y = 7</div><div class="line">var y = y; # y = 7</div><div class="line">document.getElementById(&quot;demo1&quot;).innerHTML = &quot;y=&quot;+y; #所以这里输出y=7</div><div class="line">document.getElementById(&quot;demo2&quot;).innerHTML = &quot;x=&quot;+x;</div><div class="line">document.getElementById(&quot;demo3&quot;).innerHTML = &quot;y=&quot;+y;</div><div class="line">document.getElementById(&quot;demo4&quot;).innerHTML = &quot;z=&quot;+z;</div><div class="line">document.getElementById(&quot;demo5&quot;).innerHTML = &quot;y=&quot;+y;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 <p>输出结果：<br>&gt;<br>y=7<br>x=6<br>y=7<br>z=6<br>y=7</p>
 <blockquote>
 <p><strong>“y++”和”++y”的相同之处在于y都+1了，不同之处在于y=5时，x=++y=6，x=y++=5；</strong></p>
@@ -231,13 +231,24 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ORID</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JS学习笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ORID/" class="article-tag-list-link color5">ORID</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -425,6 +436,10 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JS学习笔记</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
