@@ -189,7 +189,7 @@
 </blockquote>
 <p>接下来又有一个<strong>关于代码维护和拓展的问题</strong>：如果将来DS类中加入了<code>get_display_info</code>方法，而<code>Computer</code>类中并没有动态派发这个方法，能不能在不修改<code>Computer</code>代码的基础上，自动将<code>get_display_info</code>方法加入到<code>Computer</code>的动态派发中呢？</p>
 <ol>
-<li>用内省的方式第三次重构，：</li>
+<li>用内省的方式第三次重构：</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">require &apos;./data_source.rb&apos;</div><div class="line">class Computer</div><div class="line">  def initialize(computer_id, data_source)</div><div class="line">    @id = computer_id</div><div class="line">    @data_source = data_source</div><div class="line">    data_source.methods.grep(/^get_(.*)_info$/)&#123; Computer.define_component $1 &#125;</div><div class="line">  end</div><div class="line"></div><div class="line">  def self.define_component(name)</div><div class="line">    define_method(name) do</div><div class="line">      info = @data_source.send &quot;get_#&#123;name&#125;_info&quot;, @id</div><div class="line">      price = @data_source.send &quot;get_#&#123;name&#125;_price&quot;, @id</div><div class="line">      result = &quot;#&#123;name.capitalize&#125;: #&#123;info&#125; #&#123;price&#125;&quot;</div><div class="line">      return &quot;#&#123;result&#125;&quot; if price &gt;= 100</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line"></div><div class="line">computer = Computer.new(2,DS.new)</div><div class="line">puts computer.mouse</div><div class="line">puts computer.cpu</div><div class="line">puts computer.keyboard</div></pre></td></tr></table></figure>
 <p>这次重构中新加入的<code>data_source.methods.grep(/^get_(.*)_info$/){ Computer.define_component $1 }</code>的作用如下：</p>
@@ -915,11 +915,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Ruby元编程笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">方法总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">方法总结</a>
+                <a href="javascript:void(0)" class="js-tag color5">Ruby元编程笔记</a>
               </li>
             
             <div class="clearfix"></div>
