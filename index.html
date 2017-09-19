@@ -206,8 +206,7 @@
 <p>什么叫动态代理？</p>
 <p>一个捕获幽灵方法调用并把它们转发给另外一个对象的对象（有时也会在转发前后包装一些自己的逻辑，在这里指自己重写的method_missing方法），称为动态代理（Dynamic Proxy）。</p>
 </blockquote>
-<h5 id="当一个幽灵方法和一个真实方法发生名字冲突时"><a href="#当一个幽灵方法和一个真实方法发生名字冲突时" class="headerlink" title="当一个幽灵方法和一个真实方法发生名字冲突时"></a>当一个幽灵方法和一个真实方法发生名字冲突时</h5><p>这个问题是动态代理技术的通病，当一个幽灵方法和一个真实方法发生名字冲突时，后者会胜出。为了解决这个问题，你可以通过继承白板类和删除重名方法的方法来定义方法。</p>
-<p>继承白板类:</p>
+<h5 id="当一个幽灵方法和一个真实方法发生名字冲突时"><a href="#当一个幽灵方法和一个真实方法发生名字冲突时" class="headerlink" title="当一个幽灵方法和一个真实方法发生名字冲突时"></a>当一个幽灵方法和一个真实方法发生名字冲突时</h5><p>这个问题是动态代理技术的通病，当一个幽灵方法和一个真实方法发生名字冲突时，后者会胜出。为了解决这个问题，你可以通过继承白板类和删除重名方法的方法来定义方法。<br>继承白板类:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class XXX &lt; BasicObject</div></pre></td></tr></table></figure>
 <p>删除重名方法:</p>
 <p>可以使用<code>Module#undef_method()</code>方法，它会删除所有的（包括继承来的）方法；也可以使用<code>Module#remove_method()</code>方法，它只会删除接收者自己的方法，而保留继承来的方法。</p>
