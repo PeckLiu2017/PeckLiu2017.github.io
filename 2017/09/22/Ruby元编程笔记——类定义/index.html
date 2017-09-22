@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://peckliu2017.github.io">
-  <title>Ruby元编程笔记——代码块 | Just Writing and thinking</title>
+  <title>Ruby元编程笔记——类定义 | Just Writing and thinking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本章内容理解：讲了打破封装，随时随地增加或修改变量和方法的技术。 代码块作为“程序中的基本操作元素之一”，是实现下面这些操作的基础： 代码块是闭包，闭包的作用在于，让变量在指定的作用域发挥作用，不会受到作用域外变量的干扰。也在于将变量带到别的作用域。 接下来依次记录块，作用域以及打破封装共享变量的技术操作。 块12345def a_method(a, b)	a + yield(a, b)enda_">
+  <meta name="description" content="本章内容理解：讲了Ruby对象模型，并且介绍了几种依赖于此模型的技术。 在Java和C#等语言中，直到你创建了该类的一个对象，然后调用对象的方法才会有实际的工作。 在Ruby中，类的定义有所不同。当使用class关键字时，并非是在指定对象未来的行为方式，相反，实际上是在运行代码。 Ruby对象模型介绍以及六条规则：1.只有一种对象——要么是普通对象，要么是模块。 类就是对象，是class类的一个实">
 <meta name="keywords" content="Ruby元编程笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ruby元编程笔记——代码块">
-<meta property="og:url" content="https://peckliu2017.github.io/2017/09/20/Ruby元编程笔记——代码块/index.html">
+<meta property="og:title" content="Ruby元编程笔记——类定义">
+<meta property="og:url" content="https://peckliu2017.github.io/2017/09/22/Ruby元编程笔记——类定义/index.html">
 <meta property="og:site_name" content="Just Writing and thinking">
-<meta property="og:description" content="本章内容理解：讲了打破封装，随时随地增加或修改变量和方法的技术。 代码块作为“程序中的基本操作元素之一”，是实现下面这些操作的基础： 代码块是闭包，闭包的作用在于，让变量在指定的作用域发挥作用，不会受到作用域外变量的干扰。也在于将变量带到别的作用域。 接下来依次记录块，作用域以及打破封装共享变量的技术操作。 块12345def a_method(a, b)	a + yield(a, b)enda_">
-<meta property="og:updated_time" content="2017-09-22T02:12:51.000Z">
+<meta property="og:description" content="本章内容理解：讲了Ruby对象模型，并且介绍了几种依赖于此模型的技术。 在Java和C#等语言中，直到你创建了该类的一个对象，然后调用对象的方法才会有实际的工作。 在Ruby中，类的定义有所不同。当使用class关键字时，并非是在指定对象未来的行为方式，相反，实际上是在运行代码。 Ruby对象模型介绍以及六条规则：1.只有一种对象——要么是普通对象，要么是模块。 类就是对象，是class类的一个实">
+<meta property="og:updated_time" content="2017-09-22T02:12:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ruby元编程笔记——代码块">
-<meta name="twitter:description" content="本章内容理解：讲了打破封装，随时随地增加或修改变量和方法的技术。 代码块作为“程序中的基本操作元素之一”，是实现下面这些操作的基础： 代码块是闭包，闭包的作用在于，让变量在指定的作用域发挥作用，不会受到作用域外变量的干扰。也在于将变量带到别的作用域。 接下来依次记录块，作用域以及打破封装共享变量的技术操作。 块12345def a_method(a, b)	a + yield(a, b)enda_">
+<meta name="twitter:title" content="Ruby元编程笔记——类定义">
+<meta name="twitter:description" content="本章内容理解：讲了Ruby对象模型，并且介绍了几种依赖于此模型的技术。 在Java和C#等语言中，直到你创建了该类的一个对象，然后调用对象的方法才会有实际的工作。 在Ruby中，类的定义有所不同。当使用class关键字时，并非是在指定对象未来的行为方式，相反，实际上是在运行代码。 Ruby对象模型介绍以及六条规则：1.只有一种对象——要么是普通对象，要么是模块。 类就是对象，是class类的一个实">
   
     <link rel="alternative" href="/atom.xml" title="Just Writing and thinking" type="application/atom+xml">
   
@@ -140,108 +140,138 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Ruby元编程笔记——代码块" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Ruby元编程笔记——类定义" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Ruby元编程笔记——代码块
+      Ruby元编程笔记——类定义
     </h1>
   
 
         
-        <a href="/2017/09/20/Ruby元编程笔记——代码块/" class="archive-article-date">
-  	<time datetime="2017-09-20T14:59:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-20</time>
+        <a href="/2017/09/22/Ruby元编程笔记——类定义/" class="archive-article-date">
+  	<time datetime="2017-09-22T02:10:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本章内容理解：讲了打破封装，随时随地增加或修改变量和方法的技术。</p>
-<p>代码块作为“程序中的基本操作元素之一”，是实现下面这些操作的基础：</p>
-<p>代码块是闭包，闭包的作用在于，让变量在指定的作用域发挥作用，不会受到作用域外变量的干扰。也在于将变量带到别的作用域。</p>
-<p>接下来依次<strong>记录块，作用域以及打破封装共享变量的技术操作。</strong></p>
-<h4 id="块"><a href="#块" class="headerlink" title="块"></a>块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def a_method(a, b)</div><div class="line">	a + yield(a, b)</div><div class="line">end</div><div class="line"></div><div class="line">a_method(1, 2) &#123;|x, y| (x + y) * 3 &#125;  #=&gt;  10</div></pre></td></tr></table></figure>
-<p>通常情况下，如果只有一行，代码块可以通过大括号定义，比如上面的<code>{|x, y| (x + y) * 3 }</code>，若有多行，可以通过<code>def...end</code>来定义。</p>
-<p>在调用一个方法时才可以定义一个块。块会被直接传递给这个方法，该方法可以用yield关键字调用<code>这个块</code>。</p>
-<p>通过<code>Kernel#block_given?()</code>方法来询问当前的方法调用是否包含块。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">def a_method    </div><div class="line">	return yield if block_given?    </div><div class="line">	&apos;no block&apos;</div><div class="line">end</div><div class="line"></div><div class="line">a_method                               #  &quot;no block&quot;</div><div class="line">a_method &#123; &quot;here&apos;s a block!&quot; &#125;         #  &quot;here&apos;s a block!&quot;</div></pre></td></tr></table></figure>
-<p>可以运行的代码由两部分组成：代码本身和一组绑定。</p>
-<p>从上面两个例子可以看出，代码块是闭包，它可以把变量带出原来的作用域，带入<code>a_method</code>中执行。代码块不能孤立地运行，它需要一个执行环境：局部变量，实例变量，<code>self</code>等。可运行的代码包括两部分：代码本身和一组绑定。那么代码块是如何获得一组绑定的呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">def my_method    </div><div class="line">    x = &quot;Goodbye&quot;   </div><div class="line">    yield(&quot;cruel&quot;)</div><div class="line">end</div><div class="line"></div><div class="line">x = &quot;Hello&quot;</div><div class="line">my_method &#123;|y| &quot;#&#123;x&#125;, #&#123;y&#125; world&quot; &#125; #  &quot;Hello, cruel world&quot;</div></pre></td></tr></table></figure>
+        <p>本章内容理解：讲了Ruby对象模型，并且介绍了几种依赖于此模型的技术。</p>
+<p>在Java和C#等语言中，直到你创建了该类的一个对象，然后调用对象的方法才会有实际的工作。</p>
+<p>在Ruby中，类的定义有所不同。当使用class关键字时，并非是在指定对象未来的行为方式，相反，实际上是在运行代码。</p>
+<h5 id="Ruby对象模型介绍以及六条规则："><a href="#Ruby对象模型介绍以及六条规则：" class="headerlink" title="Ruby对象模型介绍以及六条规则："></a>Ruby对象模型介绍以及六条规则：</h5><p>1.只有一种对象——要么是普通对象，要么是模块。</p>
+<p>类就是对象，是class类的一个实例。类也是一个增强的模块，比模块多了new、allocate、superclass三个方法。</p>
+<p>普通对象不可以使用new方法再建立一个实例，模块也是。</p>
+<p>2.只有一种方法——它存在于一个模块中，通常是一个类中。</p>
+<p>无论是类或模块的实例方法，类方法，都存在于类或模块中。单件方法比较特殊，但也存在于单件类中。</p>
+<p>3.只有一种模块——可以是一个普通模块、一个类或者单件类</p>
+<p>模块可以是普通模块，可以是一个类，即增强的模块。同时一个普通的模块无法被继承。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">module M</div><div class="line">  M = 1</div><div class="line">end</div><div class="line"></div><div class="line">module D &lt; M</div><div class="line">  D = 1</div><div class="line">end</div><div class="line"></div><div class="line">SyntaxError: (irb):15: syntax error, unexpected &apos;&lt;&apos; module D &lt; M</div><div class="line"># 一个普通的模块无法被继承。</div></pre></td></tr></table></figure>
+<p>4.每个对象都有自己”真正的类”，要么是一个普通类，要么是一个单件类。</p>
+<p>前面好理解，至于”要么是一个单件类”这句话，可以通过这个例子理解一下：</p>
+<p><code>instance_eval</code>方法把当前类改成了接收者s1的单件类。只有s1自己一个对象可以使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s1, s2 = &quot;abc&quot;, &quot;def&quot;</div><div class="line">s1.instance_eval do  </div><div class="line">  def swoosh!; reverse; end</div><div class="line">end</div><div class="line"></div><div class="line">s1.swoosh!  #=&gt; &quot;cba&quot;</div><div class="line">s2.respond_to?(:swoosh!)   #=&gt; false</div></pre></td></tr></table></figure>
+<p>5.除了BasicObject，任何类只有一条向上的、直到BasicObject的祖先链。</p>
+<p>6.一个(普通)对象(区别于类这种对象)的单件类的超类是这个对象的类，一个类的单件类的超类是这个类的超类的单件类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class C</div><div class="line">  class &lt;&lt; self</div><div class="line">    def a_class_method</div><div class="line">      &apos;C#a_class_method()&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">class D &lt; C; end</div><div class="line"></div><div class="line">obj = D.new</div><div class="line"></div><div class="line"># 一个(普通)对象的单件类的超类是这个对象的类</div><div class="line">puts obj.singleton_class.superclass #=&gt; D</div><div class="line"># 一个类的单件类的超类是这个类的超类的单件类</div><div class="line">puts C.singleton_class.superclass #=&gt;  #&lt;Class:Object&gt;</div><div class="line">puts C.superclass.singleton_class #=&gt;  #&lt;Class:Object&gt;</div></pre></td></tr></table></figure>
+<p>7.调用一个方法时，Ruby先向右迈一步进入接受者真正的类，然后向上进入祖先链。这就是Ruby查找方法的方式。</p>
+<p>如果它有单件类(规则4)，查找会从单件类开始。</p>
+<p>为什么Ruby要以这种方式来组织对象模型？——这样就能在子类中调用父类的类方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class C</div><div class="line">  class &lt;&lt; self  # 这行代码表示开始为C定义类方法</div><div class="line">    def a_class_method</div><div class="line">      &apos;C#a_class_method()&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">class D &lt; C; end</div><div class="line">puts D.a_class_method #=&gt; C#a_class_method() #=&gt;在子类D中调用父类C的类方法。</div></pre></td></tr></table></figure>
+<h4 id="依赖Ruby对象模型而来的技术概念："><a href="#依赖Ruby对象模型而来的技术概念：" class="headerlink" title="依赖Ruby对象模型而来的技术概念："></a>依赖Ruby对象模型而来的技术概念：</h4><h5 id="1-在不知道类名的情况下打开一个类："><a href="#1-在不知道类名的情况下打开一个类：" class="headerlink" title="1.在不知道类名的情况下打开一个类："></a>1.在不知道类名的情况下打开一个类：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def add_method_to(a_class)    </div><div class="line">	a_class.class_eval do       </div><div class="line">		def m;</div><div class="line">			&apos;Hello!&apos;;</div><div class="line">		end    </div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">add_method_to String</div><div class="line">&quot;abc&quot;.m     #  &quot;Hello!&quot;</div></pre></td></tr></table></figure>
+<p>这里给String类增加了一个m方法。</p>
 <blockquote>
-<p>创建代码块时，代码块会获得局部绑定，然后将这两者一起传给一个方法。</p>
+<h5 id="class-eval和class的区别："><a href="#class-eval和class的区别：" class="headerlink" title="class_eval和class的区别："></a><code>class_eval</code>和<code>class</code>的区别：</h5><p>class_eval使用扁平作用域，当前的绑定依然可见。</p>
+<p>class则打开一个新的作用域，当前的绑定不可见。</p>
+<h5 id="class-eval和instance-eval的区别："><a href="#class-eval和instance-eval的区别：" class="headerlink" title="class_eval和instance_eval的区别："></a><code>class_eval</code>和<code>instance_eval</code>的区别：</h5><p>一般用instance_eval方法打开非类的对象，用class_eval方法打开类定义。</p>
+<p>当前类</p>
+<p>不管Ruby程序处于哪个位置，总存在一个当前对象：self。同样，也总有一个当前类或当前模块的存在，定义一个方法时，那个方法将成为当前类的一个实例方法。</p>
 </blockquote>
-<p>还可以在代码块内定义额外的绑定，但这些绑定在代码块结束时就消失了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">def just_yield</div><div class="line">  return yield if block_given?</div><div class="line">end</div><div class="line"></div><div class="line">top_level_variable = 1</div><div class="line"></div><div class="line">just_yield do</div><div class="line">  top_level_variable += 1</div><div class="line">  local_to_block = 1</div><div class="line">  puts local_to_block # =&gt; 1</div><div class="line">end</div><div class="line"></div><div class="line">puts top_level_variable # =&gt; 2</div><div class="line">puts local_to_block</div><div class="line"># =&gt; block_local_vars_failure.rb:24:in `&lt;main&gt;&apos;:</div><div class="line"># undefined local variable or method `local_to_block&apos; for main:Object (NameError)</div></pre></td></tr></table></figure>
-<p>基于代码块可以获取局部绑定并一直携带它们的特性，那应该如何使用闭包呢？接下来就要理解作用域了。<strong>局部变量之所以被称为局部变量，也是因为它只在自己的作用域内有效。</strong></p>
-<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><blockquote>
-<p>作用域（scope），程序设计概念，通常来说，一段程序代码中所用到的名字并不总是有效/可用的，而限定这个名字的可用性的代码范围就是这个名字的作用域。</p>
-</blockquote>
-<p>作用域通过作用域门来划分。程序会在作用域门关闭前一个作用域，同时打开一个新的作用域，作用域门有三处地方：</p>
-<p>1.类定义。</p>
-<p>2.模块定义。  </p>
-<p>3.方法。</p>
-<p>切换作用域下面的例子演示了在程序运行时作用域是怎样切换的，它会用Kernel#local_variables()方法来跟踪绑定的名字：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">blocks/scopes.rb</div><div class="line">module MyModule    # 作用域门：进入module</div><div class="line">  v1 = 1</div><div class="line">  class MyClass    # 作用域门：进入class</div><div class="line">      v2 = 2    </div><div class="line">      local_variables              #  [:v2]    </div><div class="line">        def my_method     # 作用域门：进入def</div><div class="line">            v3 = 3       </div><div class="line">            local_variables    </div><div class="line">        end    # 作用域门：离开def</div><div class="line">      local_variables              #  [:v2]</div><div class="line">  end  # 作用域门：离开class</div><div class="line">end    # 作用域门：离开module</div><div class="line">obj = MyClass.new</div><div class="line">obj.my_method                   #  [:v3]</div><div class="line">local_variables                 #  [:v1, :obj]</div></pre></td></tr></table></figure>
-<p>在一些语言中，比如Java和C#，有“内部作用域（innerscope）”的概念。在内部作用域中可以看到“外部作用域（outerscope）”中的变量。但Ruby中没有这种嵌套式的作用域，它的作用域之间是截然分开的：一旦进入一个新的作用域，原先的绑定就会被替换为一组新的绑定。这意味着在程序进入MyClass后，v1便“超出作用域范围”，从而就不可见了。</p>
-<blockquote>
-<p>几种变量及其作用域：</p>
-<p>全局变量</p>
-<p>顶级实例变量</p>
-<p>局部变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">&gt; class A</div><div class="line">&gt;   $var1 = 2 # =&gt; 全局变量</div><div class="line">&gt;   @var = &quot;the top level variable&quot; # =&gt;顶级实例变量</div><div class="line">&gt;   </div><div class="line">&gt;   def my_method</div><div class="line">&gt;     puts @var</div><div class="line">&gt;     var2 = 3</div><div class="line">&gt;   end</div><div class="line">&gt;   </div><div class="line">&gt;   def my_method1</div><div class="line">&gt;     puts var2</div><div class="line">&gt;     # =&gt; NameError: undefined local variable or method `var2&apos; for</div><div class="line">&gt;     # # &lt;A:0x007ffc8f8bfe00&gt; 在my_method中定义的局部变量不能在my_method1中使用</div><div class="line">&gt;   end</div><div class="line">&gt; end</div><div class="line">&gt;</div><div class="line">&gt; class B</div><div class="line">&gt;   def my_method</div><div class="line">&gt;     puts $var1</div><div class="line">&gt;   end</div><div class="line">&gt;   </div><div class="line">&gt;   def my_method1</div><div class="line">&gt;     puts @var2</div><div class="line">&gt;   end   </div><div class="line">&gt; end</div><div class="line">&gt;</div><div class="line">&gt; a = A.new</div><div class="line">&gt; #=&gt; #&lt;A:0x007ffd08900328&gt;</div><div class="line">&gt; a.my_method</div><div class="line">&gt; # 没有输出，要由main扮演self的角色，才能有用。而这里的self是对象a</div><div class="line">&gt; # 所以去掉classA，直接在irb中运行这段代码才可以输出@var</div><div class="line">&gt;</div><div class="line">&gt; b = B.new</div><div class="line">&gt; #=&gt; #&lt;B:0x007fb62584bb78&gt;</div><div class="line">&gt; b.my_method</div><div class="line">&gt; #=&gt; 2 # 全局变量可以在任何作用域中访问，所以即使$var1定义在A中，B的my_method方法也可以输出它</div><div class="line">&gt;  b.my_method1</div><div class="line">&gt; # 没有输出</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
-<p>全局变量的问题在于系统的任何部分都可以修改它们。因此，你会立即发现几乎没法追踪谁把它们改成了什么。正因为如此，基本的原则是：如非必要，尽可能少使用全局变量。</p>
-<p>你有时可以用顶级实例变量来代替全局变量，只要main对象在扮演self的角色，就可以访问一个顶级实例变量。但当其他对象成为self时，顶级实例变量就退出作用域了。</p>
-</blockquote>
-<p>如果希望让一个变量穿越作用域，那么该怎么做呢？要解答这个问题，还是得回到块的主题上。</p>
-<h4 id="如何改变作用域的范围？"><a href="#如何改变作用域的范围？" class="headerlink" title="如何改变作用域的范围？"></a>如何改变作用域的范围？</h4><h5 id="1-扁平化作用域："><a href="#1-扁平化作用域：" class="headerlink" title="1.扁平化作用域："></a>1.扁平化作用域：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">my_var = &quot;Success&quot;</div><div class="line">class MyClass    </div><div class="line"># 你希望在这里打印my_var...    </div><div class="line">  def my_method       </div><div class="line">  # ..还有这里    </div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
-<p>class这个作用域门。虽然不能让my_var穿越它，但是可以把class关键字替换为某个非作用域门的东西：方法。如果能用方法替换class，就能在一个闭包中获得my_var的值，并把这个闭包传递给该方法。</p>
-<p>所以上面的代码可以这样修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">my_var = &quot;Success&quot;</div><div class="line">MyClass = Class.new do</div><div class="line">puts &quot;# 你希望在这里打印 my_var = #&#123;my_var&#125;&quot;</div><div class="line">  define_method :my_method do</div><div class="line">    puts &quot;# ..还有这里 my_var = #&#123;my_var&#125;&quot;</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">mc = MyClass.new</div><div class="line">puts mc.my_method</div></pre></td></tr></table></figure>
-<p>这里用了<code>Class.new</code>以及<code>define_method</code>实现扁平作用域，从而实现了变量共享。</p>
-<blockquote>
-<p>扁平化作用域，顾名思义就是把作用域挤压在一起，共享变量。</p>
-</blockquote>
-<h5 id="2-共享作用域"><a href="#2-共享作用域" class="headerlink" title="2.共享作用域"></a>2.共享作用域</h5><p>假定你想在一组方法之间共享一个变量，但是又不希望其他方法也能访问这个变量，就可以把这些方法定义在那个变量所在的扁平作用域中，这时这个扁平作用域中也叫做共享作用域。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">def define_methods    </div><div class="line">	shared = 0    </div><div class="line">	Kernel.send :define_method, :counter do      </div><div class="line">		shared    </div><div class="line">	end    </div><div class="line"></div><div class="line">	Kernel.send :define_method, :inc do |x|       </div><div class="line">		shared += x    </div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">define_methods</div><div class="line"></div><div class="line">counter         # =&gt;  0</div><div class="line">inc(4)</div><div class="line">counter         # =&gt; 4</div></pre></td></tr></table></figure>
-<h4 id="用自己的话整理了改变作用域操作代码块的操作："><a href="#用自己的话整理了改变作用域操作代码块的操作：" class="headerlink" title="用自己的话整理了改变作用域操作代码块的操作："></a>用自己的话整理了改变作用域操作代码块的操作：</h4><h6 id="1-更改一个类中的实例变量"><a href="#1-更改一个类中的实例变量" class="headerlink" title="1.更改一个类中的实例变量"></a>1.更改一个类中的实例变量</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class MyClass    </div><div class="line">	def initialize       </div><div class="line">		@v = 1    </div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">obj = MyClass.new  # =&gt; #&lt;MyClass:0x007f93d5852260 @v=1&gt;</div><div class="line">obj.instance_eval do    </div><div class="line">	self             #=&gt; #&lt;MyClass:0x007f93d5852260 @v=1&gt;    </div><div class="line">	@v               #=&gt; 1</div><div class="line">end</div><div class="line"></div><div class="line">v = 2 obj.instance_eval &#123; @v = v &#125;</div><div class="line">obj.instance_eval &#123; @v &#125;            #  2</div></pre></td></tr></table></figure>
-<h6 id="2-传递一个块到一个方法中"><a href="#2-传递一个块到一个方法中" class="headerlink" title="2.传递一个块到一个方法中"></a>2.传递一个块到一个方法中</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def a_method(a, b)</div><div class="line">	a + yield(a, b)</div><div class="line">end</div><div class="line"></div><div class="line">a_method(1, 2) &#123;|x, y| (x + y) * 3 &#125;  #=&gt;  10</div></pre></td></tr></table></figure>
-<p>这里就把<code>{|x, y| (x + y) * 3 }</code>传递到<code>a_method</code>方法中，然后用<code>yield</code>求出程序的最终结果。</p>
-<h6 id="3-传递一个块的结果到一个到另一个块中"><a href="#3-传递一个块的结果到一个到另一个块中" class="headerlink" title="3.传递一个块的结果到一个到另一个块中"></a>3.传递一个块的结果到一个到另一个块中</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class CleanRoom</div><div class="line">  def current_temperature</div><div class="line">    19</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">cr = CleanRoom.new</div><div class="line">cr.instance_eval do</div><div class="line">  if current_temperature &lt; 20</div><div class="line">    puts &quot;wear jacket&quot;</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
-<p>但是instance_eval无法传递参数，要改用instance_exec，下面的例子比较了它们之间的区别</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">class C</div><div class="line">  def initialize</div><div class="line">    @x = 1</div><div class="line">  end</div><div class="line"></div><div class="line">  def my_method</div><div class="line">    @x</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">class D</div><div class="line">  def twisted_method</div><div class="line">    @y = 2</div><div class="line">    C.new.instance_eval &#123; &quot;@x: #&#123;@x&#125;, @y: #&#123;@y&#125;&quot; &#125;</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">puts D.new.twisted_method</div><div class="line"># =&gt; @x: 1, @y:</div><div class="line"></div><div class="line"># 把instance_eval换成instance_exec</div><div class="line">class D</div><div class="line">  def twisted_method</div><div class="line">    @y = 2</div><div class="line">    C.new.instance_exec(@y) &#123; |y| &quot;@x: #&#123;@x&#125;, @y: #&#123;y&#125;&quot; &#125;</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">puts D.new.twisted_method</div><div class="line"># =&gt; @x: 1, @y: 2</div></pre></td></tr></table></figure>
-<h4 id="剖析代码块的底层"><a href="#剖析代码块的底层" class="headerlink" title="剖析代码块的底层"></a>剖析代码块的底层</h4><h5 id="从底层看，使用代码块分为两步，一是将代码块打包备用，二是是执行被打包的代码。"><a href="#从底层看，使用代码块分为两步，一是将代码块打包备用，二是是执行被打包的代码。" class="headerlink" title="从底层看，使用代码块分为两步，一是将代码块打包备用，二是是执行被打包的代码。"></a>从底层看，使用代码块分为两步，一是将代码块打包备用，二是是执行被打包的代码。</h5><p>这些打包备用的东西就是可调用对象：</p>
-<p>1.块</p>
-<p>2.使用proc。proc基本上就是一个由块转换成的对象。</p>
-<p>3.使用lambda。它是proc的近亲。</p>
-<p>4.使用方法。</p>
-<h5 id="Proc对象"><a href="#Proc对象" class="headerlink" title="Proc对象"></a>Proc对象</h5><p>尽管Ruby中绝大多数东西都是对象，但是块不是。为什么要关心这个呢？设想希望存储[一个块供以后执行]，这时，你需要一个对象才能做到。Bill说道，“为了解决这个问题，Ruby在标准库中提供了名为Proc的类。”一个Proc就是一个转换成对象的块。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">inc = Proc.new &#123;|x| x + 1 &#125;</div><div class="line"># 更多...</div><div class="line">inc.call(2) #=&gt;3</div></pre></td></tr></table></figure>
-<p>这种先打包代码，以后调用的技术称为延迟执行（Deferred Evaluation）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dec = lambda &#123;|x| x - 1 &#125;</div><div class="line">dec.class #=&gt;Proc</div><div class="line">dec.call(2) #=&gt;1</div></pre></td></tr></table></figure>
-<h5 id="amp-操作符"><a href="#amp-操作符" class="headerlink" title="&amp;操作符"></a>&amp;操作符</h5><p>&amp;操作符能把代码块传递给另一个方法或者代码块。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 这里&#123; |x, y| x * y &#125;就被当成&amp;operation参数传递给do_math方法，随后再被传递给math方法</div><div class="line">def math(a, b)</div><div class="line">  yield(a, b)</div><div class="line">end</div><div class="line"></div><div class="line">def do_math(a, b, &amp;operation)</div><div class="line">  math(a, b, &amp;operation)</div><div class="line">end</div><div class="line"></div><div class="line"># puts do_math(2, 3)&#123; |x, y| x * y &#125;</div><div class="line">puts do_math(2, 3) #=&gt; wrong</div></pre></td></tr></table></figure>
-<p>&amp;操作符会把proc对象my_proc转换为块，再把这个块传给这个方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def my_method(greeting)</div><div class="line">	puts &quot;#&#123;greeting&#125;, #&#123;yield&#125;!&quot;</div><div class="line">end</div><div class="line"></div><div class="line">my_proc = proc &#123; &quot;Bill&quot; &#125;</div><div class="line">my_method(&quot;Hello&quot;, &amp;my_proc)</div></pre></td></tr></table></figure>
-<h5 id="Proc和lambda的区别"><a href="#Proc和lambda的区别" class="headerlink" title="Proc和lambda的区别:"></a>Proc和lambda的区别:</h5><h6 id="1-对return的处理不同。"><a href="#1-对return的处理不同。" class="headerlink" title="1.对return的处理不同。"></a>1.对return的处理不同。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def double(callable_object)    </div><div class="line">	callable_object.call * 2</div><div class="line">end</div><div class="line"></div><div class="line">l = lambda &#123; return 10 &#125;</div><div class="line">double(l) #  20</div><div class="line"></div><div class="line">p = Proc.new &#123; return 10 &#125;</div><div class="line"># 这会失败，并产生一个LocalJumpError错误:</div><div class="line"># double(p)</div></pre></td></tr></table></figure>
-<h6 id="2-对参数检查的容忍度不同。"><a href="#2-对参数检查的容忍度不同。" class="headerlink" title="2.对参数检查的容忍度不同。"></a>2.对参数检查的容忍度不同。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">p = Proc.new&#123; |a, b| [a, b] &#125;</div><div class="line">p.arity #=&gt; 2</div><div class="line">p.call(1,2,3)  #=&gt; [1, 2]</div><div class="line">p.call(1)  #=&gt; [1, nil]</div></pre></td></tr></table></figure>
-<p><code>proc</code>根据实际参数的数量自动调整输出结果。再来看<code>lambda</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ld = lambda&#123; |a, b| [a, b] &#125;</div><div class="line">ld.arity #=&gt; 2</div><div class="line">ld.call(1,2,3)  #=&gt; ArgumentError: wrong number of arguments (given 3, expected 2)</div><div class="line">ld.call(1)  #=&gt; ArgumentError: wrong number of arguments (given 1, expected 2)</div></pre></td></tr></table></figure>
-<p>如果参数个数不恰好是两个，就会报错。</p>
-<h5 id="方法也是一个可调用对象："><a href="#方法也是一个可调用对象：" class="headerlink" title="方法也是一个可调用对象："></a>方法也是一个可调用对象：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">blocks/methods.rb</div><div class="line">class MyClass    </div><div class="line">	def initialize(value)       </div><div class="line">		@x = value    </div><div class="line">	end    </div><div class="line"></div><div class="line">	def my_method       </div><div class="line">		@x    </div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">object = MyClass.new(1)</div><div class="line">m = object.method :my_method</div><div class="line">m.call                               =&gt;    # 1</div></pre></td></tr></table></figure>
-<h4 id="这章知识的运用："><a href="#这章知识的运用：" class="headerlink" title="这章知识的运用："></a>这章知识的运用：</h4><p>开发一个DSL语言，进行几次重构，使代码质量不断进阶：</p>
-<p>1.作用域共享</p>
-<p>2.变量不要胡乱地散落在顶级作用域里</p>
-<p>3.把事件触发条件从代码块转换成proc</p>
-<p>4.消灭全局变量，使用共享作用域</p>
-<p>5.增加洁净室</p>
+<h5 id="2-类实例变量和类变量"><a href="#2-类实例变量和类变量" class="headerlink" title="2.类实例变量和类变量"></a>2.类实例变量和类变量</h5><p>类实例变量定义于当前类充当self的时刻，所以只能被它本身的类访问，不能被它的实例或者子类访问。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">class C</div><div class="line">  @@v1 = 1</div><div class="line">  @v2 = 2</div><div class="line"></div><div class="line">  def my_method1;</div><div class="line">    puts  @@v1</div><div class="line">  end</div><div class="line"></div><div class="line">  def my_method2;</div><div class="line">    puts  @v2</div><div class="line">  end</div><div class="line"></div><div class="line">end</div><div class="line"></div><div class="line">class D &lt; C    </div><div class="line">  def my_method1;</div><div class="line">    @@v1 = 3</div><div class="line">    puts  @@v1</div><div class="line">  end</div><div class="line"></div><div class="line">  def my_method2;</div><div class="line">    puts  @v2</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">obj1 = C.new</div><div class="line">obj1.my_method1 #=&gt; 1</div><div class="line">obj1.my_method2 #=&gt; nil # 类变量不能被它的实例或者子类访问</div><div class="line"></div><div class="line">obj2 = D.new</div><div class="line">obj2.my_method1 #=&gt; 3</div><div class="line">obj2.my_method2 #=&gt; nil # 类变量不能被它的实例或者子类访问</div><div class="line"></div><div class="line">obj1.my_method1 #=&gt; 3</div><div class="line"># @@v1定义于main的上下文，属于main的类object</div><div class="line"># 所以也属于object所有的后代</div><div class="line"># 所以在C中定义的@@v1因为D#my_method1被改为3</div><div class="line"># 也因为这个特性，类变量可以在别处被修改，使用它的情况很少，使用类实例变量较多。</div></pre></td></tr></table></figure>
+<h5 id="3-类宏"><a href="#3-类宏" class="headerlink" title="3.类宏"></a>3.类宏</h5><p>类宏可以为任何ruby对象创建属性。</p>
+<p>在给对象创造属性的时候用<code>Module#attr_ accessor()</code>，给类创造属性时用单件方法。</p>
+<p>属性实际上只是一对方法，如果在单件类中定义了这些方法，那么他实际上会成为类方法。</p>
+<p>Ruby对象并没有属性。如果希望有一些像属性的东西，就得定义两个拟态方法：一个读方法和一个写方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># class_definitions/attr.rb</div><div class="line">class MyClass    </div><div class="line">	def my_attribute=(value)       </div><div class="line">		@my_attribute = value    </div><div class="line">	end</div><div class="line"></div><div class="line">    def my_attribute       </div><div class="line">        @my_attribute    </div><div class="line">    end</div><div class="line">end</div><div class="line"></div><div class="line">obj = MyClass.new</div><div class="line">obj.my_attribute = &apos;x&apos;</div><div class="line">obj.my_attribute             #  &quot;x&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>写这样的方法（也叫访问器）很快就让人感到枯燥。可以通过Module#attr_ accessor()则可以生成读写方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class MyClass    </div><div class="line">	attr_accessor :my_attribute</div><div class="line">end</div></pre></td></tr></table></figure>
+<ul>
+<li>为普通Ruby对象创建属性：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class MyClass</div><div class="line">  attr_accessor :b</div><div class="line">end</div><div class="line"></div><div class="line">obj = MyClass.new</div><div class="line">obj.a = 2</div><div class="line">puts obj.a #=&gt; 2</div></pre></td></tr></table></figure>
+<ul>
+<li>为类创建属性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class MyClass; end</div><div class="line"></div><div class="line">class Class</div><div class="line">  attr_accessor :a</div><div class="line">end</div><div class="line"></div><div class="line">MyClass.b = 42</div><div class="line">puts MyClass.b #=&gt; 42</div></pre></td></tr></table></figure>
+<p>但这样做会让所有继承Class类的类都拥有这个属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 接上段代码</div><div class="line">MyClass1.b = 42</div><div class="line">puts MyClass1.b #=&gt; 42</div></pre></td></tr></table></figure>
+<p>所以考虑下一种做法：</p>
+<ul>
+<li>将类属性创建在该类的单件类中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class MyClass</div><div class="line">  class &lt;&lt; self</div><div class="line">    attr_accessor :c</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">MyClass.c = &apos;It works!&apos;</div><div class="line">puts MyClass.c #=&gt; 42</div><div class="line"></div><div class="line">MyClass1.c = &apos;It works!&apos;</div><div class="line">puts MyClass1.c #=&gt; 42</div><div class="line"># =&gt; undefined method `c=&apos; for MyClass1:Class (NoMethodError)</div></pre></td></tr></table></figure>
+<h5 id="4-单件类"><a href="#4-单件类" class="headerlink" title="4.单件类"></a>4.单件类</h5><p>每个单件类只有一个实例，而且不能被继承。单件类也是一个对象单件方法的存活之所。</p>
+<ul>
+<li>单件方法适合在什么情况下使用</li>
+</ul>
+<p>​       仅仅针对于个别使用次数很少的对象。也就是用来增强某个类。</p>
+<p>​       类方法的实质是一个类的单件方法。</p>
+<p>​       类方法的实质就是：它们是一个类的单件方法。为什么要是单件方法呢？——只是这一个对象（类）能用它。</p>
+<ul>
+<li>怎样进入单件类？</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class &lt;&lt; an_object</div><div class="line"> # ...</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>如果对象有单件类，Ruby不是从它所在的类开始查找，而是从对象的单件类开始查找方法。</p>
+<p>在单件类中，有一种运用情况是类方法，下面来看看类方法。</p>
+<h5 id="5-三种定义类方法的方法："><a href="#5-三种定义类方法的方法：" class="headerlink" title="5.三种定义类方法的方法："></a>5.三种定义类方法的方法：</h5><h5 id="类扩展"><a href="#类扩展" class="headerlink" title="类扩展"></a>类扩展</h5><p>通过向类的单件类中增加模块来定义方法。</p>
+<ul>
+<li>直接打开类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module MyModule</div><div class="line">  def my_method; &quot;Hello&quot;; end</div><div class="line">end</div><div class="line"></div><div class="line">class MyClass</div><div class="line">  class &lt;&lt; self</div><div class="line">    include MyModule</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">puts MyClass.my_method  #=&gt; &quot;Hello&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>include方法扩展：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">module MyModule</div><div class="line">  def my_method; &quot;Hello&quot;; end</div><div class="line">end</div><div class="line"></div><div class="line">obj = Object.new</div><div class="line"></div><div class="line">class &lt;&lt; obj</div><div class="line">  include MyModule</div><div class="line">end</div><div class="line"></div><div class="line">puts obj.my_method  #=&gt; &quot;Hello&quot;</div><div class="line">puts obj.singleton_methods  #=&gt; &quot;[:my_method]&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>extend方法扩展：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">module MyModule</div><div class="line">  def my_method; &quot;Hello&quot;; end</div><div class="line">end</div><div class="line"></div><div class="line">obj = Object.new</div><div class="line">obj.extend MyModule</div><div class="line">puts obj.my_method  #=&gt; &quot;Hello&quot;</div><div class="line"></div><div class="line">class MyClass</div><div class="line">  extend MyModule</div><div class="line">end</div><div class="line"></div><div class="line">puts MyClass.my_method  #=&gt; &quot;Hello&quot;</div></pre></td></tr></table></figure>
+<h5 id="6-方法包装器"><a href="#6-方法包装器" class="headerlink" title="6.方法包装器"></a>6.方法包装器</h5><p>有一个不能直接修改的方法，而我希望为这个方法包装额外的特性，这样所有的客户端都能自动获得这个额外特性。要明白方法包装器，先明白方法别名：</p>
+<ul>
+<li>方法别名</li>
+</ul>
+<p>有点绕，先看较简单的初级形式，它只输出一个字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class MyClass</div><div class="line">  def my_method</div><div class="line">    &apos;my_method()&apos;</div><div class="line">  end</div><div class="line">  alias_method :m, :my_method</div><div class="line">  alias_method :m2, :m</div><div class="line">end</div><div class="line"></div><div class="line">obj = MyClass.new</div><div class="line">puts obj.my_method</div><div class="line">puts obj.m</div><div class="line">puts obj.m2</div></pre></td></tr></table></figure>
+<p>先给方法命名一个别名，然后重定义了它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class String</div><div class="line">  alias_method :real_length, :length</div><div class="line"></div><div class="line">  def length</div><div class="line">    real_length &gt; 5 ? &apos;long&apos; : &apos;short&apos;</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">puts &quot;War and Peace&quot;.length</div><div class="line">puts &quot;War and Peace&quot;.real_length</div></pre></td></tr></table></figure>
+<p>当调用<code>real_length</code>时，它会调用原来的<code>length</code>并输出结果。</p>
+<p>调用<code>length</code>时，它会通过<code>real_length</code>与5比较，然后得到结果。同样的，调用<code>real_length</code>时，它会调用原来的<code>length</code>并输出结果。</p>
+<ul>
+<li>定义环绕别名</li>
+</ul>
+<p>​       1.给方法定义一个别名</p>
+<p>​       2.重定义这个方法</p>
+<p>​       3.在新的方法中调用老的方法</p>
+<p>​       它的作用本质是往老方法中加入一些代码。它是一种方法包装器，下面来看看更多的方法包装器：</p>
+<ul>
+<li>用细化封装器代替环绕别名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">module StringRefinement</div><div class="line">  refine String do</div><div class="line">    def length</div><div class="line">      super &gt; 5 ? &apos;long&apos; : &apos;short&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">using StringRefinement</div><div class="line">puts &quot;War and Peace&quot;.length #=&gt; &quot;long&quot;</div></pre></td></tr></table></figure>
+<p>​       这里的只用一个<code>super</code>关键字调用原来的方法并与5比较得出结果。</p>
+<p>​       细化封装器的作用范围只到文件末尾处，比环绕别名安全，因为环绕别名是全局性的。</p>
+<p>​       不过还有一种方法包装的技术，使用<code>module_prepend</code>方法：</p>
+<ul>
+<li>下包含包装器：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module ExplicitString</div><div class="line">  def length</div><div class="line">    super &gt; 5 ? &apos;long&apos; : &apos;short&apos;</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">String.class_eval do</div><div class="line">  prepend ExplicitString</div><div class="line">end</div><div class="line"></div><div class="line">puts &quot;War and Peace&quot;.length #=&gt; &quot;long&quot;</div></pre></td></tr></table></figure>
+<p>​       它也是一种局部化的方法包装器，不过一般认为它比细化包装器和环绕别名都更清晰。</p>
 
       
 
@@ -311,7 +341,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://peckliu2017.github.io/2017/09/20/Ruby元编程笔记——代码块/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://peckliu2017.github.io/2017/09/22/Ruby元编程笔记——类定义/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -325,20 +355,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/09/19/Ruby元编程笔记——-方法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/09/20/Ruby元编程笔记——代码块/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Ruby元编程笔记—— 方法
+          Ruby元编程笔记——代码块
         
       </div>
     </a>
   
-  
-    <a href="/2017/09/22/Ruby元编程笔记——类定义/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Ruby元编程笔记——类定义</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
