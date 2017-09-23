@@ -297,7 +297,7 @@
 <p>当前类</p>
 <p>不管Ruby程序处于哪个位置，总存在一个当前对象：self。同样，也总有一个当前类或当前模块的存在，定义一个方法时，那个方法将成为当前类的一个实例方法。</p>
 </blockquote>
-<h5 id="2-类实例变量和类变量"><a href="#2-类实例变量和类变量" class="headerlink" title="2.类实例变量和类变量"></a>2.类实例变量和类变量</h5><p>类实例变量定义于当前类充当self的时刻，所以只能被它本身的类访问，不能被它的实例或者子类访问。</p>
+<h5 id="2-类实例变量和类变量"><a href="#2-类实例变量和类变量" class="headerlink" title="2.类实例变量和类变量"></a>2.类实例变量和类变量</h5><p>类实例变量是Class类的实例——即继承Class的一般类的实例变量。一般类相对于Class类来说也就是个普通对象。它定义于一般类充当self的时刻，所以只能被它本身的类访问，不能被它的实例或者子类访问。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">class C</div><div class="line">  @@v1 = 1   # 类变量以@@开头</div><div class="line">  @v2 = 2  # 这是类实例变量</div><div class="line"></div><div class="line">  def my_method1;</div><div class="line">    puts  @@v1</div><div class="line">  end</div><div class="line"></div><div class="line">  def my_method2;</div><div class="line">    puts  @v2</div><div class="line">  end</div><div class="line"></div><div class="line">end</div><div class="line"></div><div class="line">class D &lt; C    </div><div class="line">  def my_method1;</div><div class="line">    @@v1 = 3</div><div class="line">    puts  @@v1</div><div class="line">  end</div><div class="line"></div><div class="line">  def my_method2;</div><div class="line">    puts  @v2</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">obj1 = C.new</div><div class="line">obj1.my_method1 #=&gt; 1</div><div class="line">obj1.my_method2 #=&gt; nil # 类实例变量不能被它的实例或者子类访问</div><div class="line"></div><div class="line">obj2 = D.new</div><div class="line">obj2.my_method1 #=&gt; 3</div><div class="line">obj2.my_method2 #=&gt; nil # 类实例变量不能被它的实例或者子类访问</div><div class="line"></div><div class="line">obj1.my_method1 #=&gt; 3</div><div class="line"># @@v1定义于main的上下文，属于main的类object</div><div class="line"># 所以也属于object所有的后代</div><div class="line"># 所以在C中定义的@@v1因为D#my_method1被改为3</div><div class="line"># 也因为这个特性，类变量可以在别处被修改，使用它的情况很少，使用类实例变量较多。</div></pre></td></tr></table></figure>
 <h5 id="3-类宏"><a href="#3-类宏" class="headerlink" title="3.类宏"></a>3.类宏</h5><p>类宏可以为任何ruby对象创建属性。</p>
 <p>在给对象创造属性的时候用<code>Module#attr_ accessor()</code>，给类创造属性时用单件方法。</p>
@@ -823,15 +823,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JS学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ORID</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JS学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
