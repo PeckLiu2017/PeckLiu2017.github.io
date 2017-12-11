@@ -369,7 +369,7 @@
 分析：基本上就是用现成的栈结构封装一下设计一个新的栈类型。
 解法：
 1.先设计一个栈结构：​
-1234567891011121314151
+123456789101112131415161718192021class Stack  def initialize    @stack = []  end  def push(value)    @stack &lt;&lt; value  end  def pop    @stack.pop  end  def peek    @st
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -499,7 +499,11 @@
 
 它会创建经过检验的属性
 接受属性名和代码块，代码块用来校验，如果对一个属性赋值，而代码块没有返回true，就会抛出异常。
-attr_checked并不在每个类中都可用，因为它的初衷
+attr_checked并不在每个类中都可用，因为它的初衷并不是把标准库搞的乱七八糟，只有当一个类包含CheckedAttributes模块时才能使用这个方法。
+
+开发步骤：
+使用 eval() 编写一个名为 add_checked_attribute() 的内核方法，为类添加一个最简单的经过校验的属性，比如说 age 。
+这里用 eval 方法（背景知识
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -628,7 +632,10 @@ attr_checked并不在每个类中都可用，因为它的初衷
           本章内容理解：讲了Ruby对象模型，并且介绍了几种依赖于此模型的技术。
 在Java和C#等语言中，直到你创建了该类的一个对象，然后调用对象的方法才会有实际的工作。
 在Ruby中，类的定义有所不同。当使用class关键字时，并非是在指定对象未来的行为方式，相反，实际上是在运行代码。
-Ruby对象模型介
+Ruby对象模型介绍以及七条规则：1.只有一种对象——要么是普通对象，要么是模块。
+类就是对象，是class类的一个实例。类也是一个增强的模块，比模块多了new、allocate、superclass三个方法。
+普通对象不可以使用new方法再建立一个实例，模块也是。
+2.只有一种方法——它存在于一个模块中，通常是一个
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -757,7 +764,9 @@ Ruby对象模型介
           本章内容理解：讲了打破封装，随时随地增加或修改变量和方法的技术。
 代码块作为“程序中的基本操作元素之一”，是实现下面这些操作的基础：
 代码块是闭包，闭包的作用在于，让变量在指定的作用域发挥作用，不会受到作用域外变量的干扰。也在于将变量带到别的作用域。
-接下来依次记录块，作用域以及打破封装共享变量的技
+接下来依次记录块，作用域以及打破封装共享变量的技术操作。
+块12345def a_method(a, b)	a + yield(a, b)enda_method(1, 2) &#123;|x, y| (x + y) * 3 &#125;  #=&gt;  10
+通常情况下，如果只有一行，代码块可以通过大括号定义，比如上面的{|x, y| (x +
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -887,7 +896,9 @@ Ruby对象模型介
 本章的主要内容：通过元编程技术使代码更加简洁，更有利于扩展和维护。
 先来看一段代码，通过重构的过程，逐步了解元编程怎样发挥作用。
 
-这是一个连接数
+这是一个连接数据库并查询相关信息的data_source类。为节省时间，可直接跳到第三步重构步骤，需要时再跳回来看。
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1013,7 +1024,11 @@ Ruby对象模型介
       
         
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new "My New Post"
+More info: Writing
+Run server1$ hexo server
+More in
           ...
           <!--noindex-->
           <div class="post-button text-center">
