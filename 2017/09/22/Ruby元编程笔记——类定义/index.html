@@ -86,7 +86,7 @@
 <meta property="og:url" content="https://peckliu2017.github.io/2017/09/22/Ruby元编程笔记——类定义/index.html">
 <meta property="og:site_name" content="Thinking by Writing">
 <meta property="og:description" content="本章内容理解：讲了Ruby对象模型，并且介绍了几种依赖于此模型的技术。 在Java和C#等语言中，直到你创建了该类的一个对象，然后调用对象的方法才会有实际的工作。 在Ruby中，类的定义有所不同。当使用class关键字时，并非是在指定对象未来的行为方式，相反，实际上是在运行代码。 Ruby对象模型介绍以及七条规则：1.只有一种对象——要么是普通对象，要么是模块。 类就是对象，是class类的一个实">
-<meta property="og:updated_time" content="2017-10-10T03:19:18.000Z">
+<meta property="og:updated_time" content="2017-12-11T05:47:54.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ruby元编程笔记——类定义">
 <meta name="twitter:description" content="本章内容理解：讲了Ruby对象模型，并且介绍了几种依赖于此模型的技术。 在Java和C#等语言中，直到你创建了该类的一个对象，然后调用对象的方法才会有实际的工作。 在Ruby中，类的定义有所不同。当使用class关键字时，并非是在指定对象未来的行为方式，相反，实际上是在运行代码。 Ruby对象模型介绍以及七条规则：1.只有一种对象——要么是普通对象，要么是模块。 类就是对象，是class类的一个实">
@@ -373,6 +373,7 @@
 <p>无论是类或模块的实例方法，类方法，都存在于类或模块中。单件方法比较特殊，但也存在于单件类中。</p>
 <p>3.只有一种模块——可以是一个普通模块、一个类或者单件类</p>
 <p>模块可以是普通模块，可以是一个类，即增强的模块。同时一个普通的模块无法被继承。</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">module M</div><div class="line">  M = 1</div><div class="line">end</div><div class="line"></div><div class="line">module D &lt; M</div><div class="line">  D = 1</div><div class="line">end</div><div class="line"></div><div class="line">SyntaxError: (irb):15: syntax error, unexpected &apos;&lt;&apos; module D &lt; M</div><div class="line"># 一个普通的模块无法被继承。</div></pre></td></tr></table></figure>
 <p>4.每个对象都有自己”真正的类”，要么是一个普通类，要么是一个单件类。</p>
 <p>前面好理解，至于”要么是一个单件类”这句话，可以通过这个例子理解一下：</p>

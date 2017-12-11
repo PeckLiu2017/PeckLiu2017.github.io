@@ -86,7 +86,7 @@
 <meta property="og:url" content="https://peckliu2017.github.io/2017/09/20/Ruby元编程笔记——代码块/index.html">
 <meta property="og:site_name" content="Thinking by Writing">
 <meta property="og:description" content="本章内容理解：讲了打破封装，随时随地增加或修改变量和方法的技术。 代码块作为“程序中的基本操作元素之一”，是实现下面这些操作的基础： 代码块是闭包，闭包的作用在于，让变量在指定的作用域发挥作用，不会受到作用域外变量的干扰。也在于将变量带到别的作用域。 接下来依次记录块，作用域以及打破封装共享变量的技术操作。 块12345def a_method(a, b)	a + yield(a, b)enda_">
-<meta property="og:updated_time" content="2017-09-22T02:12:51.000Z">
+<meta property="og:updated_time" content="2017-12-11T05:47:48.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ruby元编程笔记——代码块">
 <meta name="twitter:description" content="本章内容理解：讲了打破封装，随时随地增加或修改变量和方法的技术。 代码块作为“程序中的基本操作元素之一”，是实现下面这些操作的基础： 代码块是闭包，闭包的作用在于，让变量在指定的作用域发挥作用，不会受到作用域外变量的干扰。也在于将变量带到别的作用域。 接下来依次记录块，作用域以及打破封装共享变量的技术操作。 块12345def a_method(a, b)	a + yield(a, b)enda_">
@@ -371,6 +371,7 @@
 <p>通常情况下，如果只有一行，代码块可以通过大括号定义，比如上面的<code>{|x, y| (x + y) * 3 }</code>，若有多行，可以通过<code>def...end</code>来定义。</p>
 <p>在调用一个方法时才可以定义一个块。块会被直接传递给这个方法，该方法可以用yield关键字调用<code>这个块</code>。</p>
 <p>通过<code>Kernel#block_given?()</code>方法来询问当前的方法调用是否包含块。</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">def a_method    </div><div class="line">	return yield if block_given?    </div><div class="line">	&apos;no block&apos;</div><div class="line">end</div><div class="line"></div><div class="line">a_method                               #  &quot;no block&quot;</div><div class="line">a_method &#123; &quot;here&apos;s a block!&quot; &#125;         #  &quot;here&apos;s a block!&quot;</div></pre></td></tr></table></figure>
 <p>可以运行的代码由两部分组成：代码本身和一组绑定。</p>
 <p>从上面两个例子可以看出，代码块是闭包，它可以把变量带出原来的作用域，带入<code>a_method</code>中执行。代码块不能孤立地运行，它需要一个执行环境：局部变量，实例变量，<code>self</code>等。可运行的代码包括两部分：代码本身和一组绑定。那么代码块是如何获得一组绑定的呢？</p>
