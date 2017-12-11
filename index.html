@@ -374,13 +374,13 @@
 
       
         
-          <h5 id="1-设计一个有-getMin（求最小值）功能的栈"><a href="#1-设计一个有-getMin（求最小值）功能的栈" class="headerlink" title="1.设计一个有 getMin（求最小值）功能的栈"></a>1.设计一个有 getMin（求最小值）功能的栈</h5><p>要求：</p>
+          <p>设计一个有 getMin（求最小值）功能的栈</p>
+<p>要求：</p>
 <p>1.pop、push、getMin操作的时间复杂度都是O(1)。</p>
 <p>2.设计的栈类型可以使用现成的栈结构。</p>
 <p>分析：基本上就是用现成的栈结构封装一下设计一个新的栈类型。</p>
 <p>解法：</p>
-<p>1.先设计一个栈结构：​</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Stack</div><div class="line">  def initialize</div><div class="line">    @stack = []</div><div class="line">  end</div><div class="line"></div><div class="line">  def push(value)</div><div class="line">    @stack &lt;&lt; value</div><div class="line">  end</div><div class="line"></div><div class="line">  def pop</div><div class="line">    @stack.pop</div><div class="line">  end</div><div class="line"></div><div class="line">  def peek</div><div class="line">    @stack.last</div><div class="line">  end</div><div class="line"></div><div class="line">  def empty?</div><div class="line">    @stack.empty?</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+<h5 id="1-先设计一个栈结构：​"><a href="#1-先设计一个栈结构：​" class="headerlink" title="1.先设计一个栈结构：​"></a>1.先设计一个栈结构：​</h5>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/09/24/设计一个有-getMin（求最小值）功能的栈/#more" rel="contents">
