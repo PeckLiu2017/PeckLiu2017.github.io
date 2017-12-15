@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[用React写Hello World]]></title>
+    <url>%2F2017%2F12%2F15%2F%E7%94%A8React%E5%86%99Hello%20World%2F</url>
+    <content type="text"><![CDATA[思路使用一个新框架首先要建立相应开发环境，引入框架的源文件，然后用框架来写代码，最后把这些代码组织起来。 代码123456789101112131415161718192021222324252627&lt;!DOCTYPE html&gt;&lt;html&gt; &lt;head&gt; &lt;meta charset=&quot;utf-8&quot;&gt; &lt;!-- 引入 react 的CDN文件和 Babel 编译器 --&gt; &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt; &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;https://unpkg.com/babel-standalone@6/babel.min.js&quot;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;!-- 构建容器 --&gt; &lt;div id=&quot;example&quot;&gt;&lt;/div&gt; &lt;script type=&quot;text/babel&quot;&gt; /* 构建组件 */ class MyTitle extends React.Component &#123; render() &#123; return &lt;h1&gt;Hello World&lt;/h1&gt;; &#125; &#125;; /* 将组件的渲染结果放入容器 */ ReactDOM.render( &lt;MyTitle/&gt;, document.getElementById(&apos;example&apos;) ); &lt;/script&gt; &lt;/body&gt;&lt;/html&gt; 其他方法还有其它方法，比如构建管道创建新应用，或者增加react到原有应用，具体详见React 官方文档。]]></content>
+      <categories>
+        <category>React学习笔记</category>
+      </categories>
+      <tags>
+        <tag>React学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[学习方向的思考]]></title>
     <url>%2F2017%2F12%2F14%2F%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%90%91%E7%9A%84%E6%80%9D%E8%80%83%2F</url>
-    <content type="text"><![CDATA[现在准备学习前端了。那么前端最重要的问题是什么？ 谷歌了好久，也找不到直接的答案。有很多近似问题的答案，但大多是针对刚入职的前端新人的。或者，大致谈谈前端框架工具的使用，专业技能树的补全以及10年以内职业生涯的规划。 我只好自己找直接答案。 答案只有可能在实践中。 但以目前刚刚自学前端的实践状况来说，我只能从相对简单的思路去思考这个问题——如何快速做出用户使用的产品。再近一点——给出一个项目要求，思考如何用最快的速度立刻把它做出来。这需要做大量的 demo 。熟练掌握基本功。 如何做 demo 呢？ 先确定要学习的技术，比如 react 。在大的方面，注意学习这个框架是做什么的，是怎么做的。小的方面，不断提升自己做 demo 的速度和质量。至于深层原理，需要的时候再去考虑。 那么从明天 2017.12.15 开始，试试两个星期，也就是到 2017.12.31 能不能把 react 的 docs 部分文档看完并做相应的 demo 。 ​]]></content>
+    <content type="text"><![CDATA[现在准备学习前端了。那么前端最重要的问题是什么？ 谷歌了好久，也找不到直接的答案。有很多近似问题的答案，但大多是针对刚入职的前端新人的。或者，大致谈谈前端框架工具的使用，专业技能树的补全以及10年以内职业生涯的规划。 我只好自己找直接答案。 答案只有可能在实践中。 但以目前刚刚自学前端的实践状况来说，我只能从相对简单的思路去思考这个问题——如何快速做出用户使用的产品。再近一点——给出一个项目要求，思考如何用最快的速度立刻把它做出来。这需要做大量的 demo 。熟练掌握基本功。 如何做 demo 呢？ 先确定要学习的技术，比如 react 。在大的方面，注意学习这个框架是做什么的，是怎么做的。小的方面，不断提升自己做 demo 的速度和质量。至于深层原理，需要的时候再去考虑。 那么从明天 2017.12.15 开始，试试两个星期，也就是到 2017.12.31 看看能不能把 react 的 docs 部分文档看完并做相应的 demo 。 ​]]></content>
       <categories>
         <category>学习方向</category>
       </categories>
