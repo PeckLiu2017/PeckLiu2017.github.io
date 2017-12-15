@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="React学习笔记," />
+  <meta name="keywords" content="React 学习笔记," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="思路使用一个新框架首先要建立相应开发环境，引入框架的源文件，然后用框架来写代码，最后把这些代码组织起来。 代码123456789101112131415161718192021222324252627&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;  &amp;lt;head&amp;gt;    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;    &amp;lt;!--">
-<meta name="keywords" content="React学习笔记">
+<meta name="description" content="思路使用一个新框架首先要建立相应开发环境，引入框架的源文件，然后用框架来写代码，最后把这些代码组织起来。">
+<meta name="keywords" content="React 学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用React写Hello World">
+<meta property="og:title" content="用 React 写 Hello World">
 <meta property="og:url" content="https://peckliu2017.github.io/2017/12/15/用React写Hello World/index.html">
 <meta property="og:site_name" content="Thinking by Writing">
-<meta property="og:description" content="思路使用一个新框架首先要建立相应开发环境，引入框架的源文件，然后用框架来写代码，最后把这些代码组织起来。 代码123456789101112131415161718192021222324252627&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;  &amp;lt;head&amp;gt;    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;    &amp;lt;!--">
-<meta property="og:updated_time" content="2017-12-15T07:18:53.541Z">
+<meta property="og:description" content="思路使用一个新框架首先要建立相应开发环境，引入框架的源文件，然后用框架来写代码，最后把这些代码组织起来。">
+<meta property="og:updated_time" content="2017-12-15T09:35:50.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用React写Hello World">
-<meta name="twitter:description" content="思路使用一个新框架首先要建立相应开发环境，引入框架的源文件，然后用框架来写代码，最后把这些代码组织起来。 代码123456789101112131415161718192021222324252627&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;  &amp;lt;head&amp;gt;    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;    &amp;lt;!--">
+<meta name="twitter:title" content="用 React 写 Hello World">
+<meta name="twitter:description" content="思路使用一个新框架首先要建立相应开发环境，引入框架的源文件，然后用框架来写代码，最后把这些代码组织起来。">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>用React写Hello World | Thinking by Writing</title>
+  <title>用 React 写 Hello World | Thinking by Writing</title>
   
 
 
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">用React写Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">用 React 写 Hello World</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">React学习笔记</span>
+                  <a href="/categories/React-学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">React 学习笔记</span>
                   </a>
                 </span>
 
@@ -376,8 +376,9 @@
 
       
         <h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>使用一个新框架首先要建立相应开发环境，引入框架的源文件，然后用框架来写代码，最后把这些代码组织起来。</p>
+<a id="more"></a>
 <h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">    &lt;!--  引入 react 的CDN文件和 Babel 编译器 --&gt;</div><div class="line">    &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;https://unpkg.com/babel-standalone@6/babel.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;!-- 构建容器 --&gt;</div><div class="line">    &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    /* 构建组件 */</div><div class="line">    class MyTitle extends React.Component &#123;</div><div class="line">      render() &#123;</div><div class="line">        return &lt;h1&gt;Hello World&lt;/h1&gt;;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">    /* 将组件的渲染结果放入容器 */</div><div class="line">    ReactDOM.render(</div><div class="line">      &lt;MyTitle/&gt;,</div><div class="line">      document.getElementById(&apos;example&apos;)</div><div class="line">    );</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h5 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h5><p>还有其它方法，比如构建管道创建新应用，或者增加react到原有应用，具体详见<a href="https://doc.react-china.org/docs/installation.html#%E6%B7%BB%E5%8A%A0-react-%E5%88%B0%E7%8E%B0%E6%9C%89%E5%BA%94%E7%94%A8" target="_blank" rel="external">React 官方文档</a>。</p>
+<h5 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h5><p>还有其它方法，比如构建管道创建新应用，或者增加react到原有应用，具体详见<a href="https://doc.react-china.org/docs/installation.html" target="_blank" rel="external">React Installation</a>。</p>
 
       
     </div>
@@ -395,7 +396,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/React学习笔记/" rel="tag"># React学习笔记</a>
+            <a href="/tags/React-学习笔记/" rel="tag"># React 学习笔记</a>
           
         </div>
       
@@ -407,6 +408,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/15/条件渲染/" rel="next" title="条件渲染">
+                <i class="fa fa-chevron-left"></i> 条件渲染
+              </a>
             
           </div>
 
@@ -497,7 +502,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
